@@ -1,0 +1,105 @@
+{
+  "keywords_map": {
+    "software": ["prog_basics", "data_structures", "web_dev", "systems"],
+    "code": ["prog_basics", "data_structures", "web_dev"],
+    "developer": ["prog_basics", "data_structures", "web_dev"],
+    "engineer": ["math_basics", "prog_basics", "systems"],
+    "doctor": ["bio_basics", "anatomy", "clinical"],
+    "health": ["bio_basics", "anatomy"],
+    "medical": ["bio_basics", "anatomy", "clinical"],
+    "business": ["finance", "marketing", "leadership"],
+    "entrepreneur": ["finance", "marketing", "leadership", "product"],
+    "startup": ["product", "marketing", "finance"],
+    "design": ["ui_ux", "color_theory", "tools"],
+    "art": ["color_theory", "drawing"],
+    "data": ["math_basics", "prog_basics", "stats", "ml"],
+    "ai": ["math_basics", "prog_basics", "ml", "systems"]
+  },
+  "knowledge_blocks": {
+    "prog_basics": {
+      "name": "Programming Fundamentals",
+      "hours_required": 100,
+      "daily_tasks": ["Read documentation for 30m", "Write basic scripts for 1h", "Solve 2 logic puzzles"]
+    },
+    "data_structures": {
+      "name": "Data Structures & Algorithms",
+      "hours_required": 150,
+      "daily_tasks": ["Study a new algorithm for 45m", "Practice LeetCode for 1h"]
+    },
+    "web_dev": {
+      "name": "Full-Stack Web Development",
+      "hours_required": 300,
+      "daily_tasks": ["Build UI components for 1h", "Connect APIs for 1h", "Debug and test for 30m"]
+    },
+    "systems": {
+      "name": "Systems Architecture",
+      "hours_required": 200,
+      "daily_tasks": ["Design system flowcharts for 1h", "Read engineering blogs for 30m"]
+    },
+    "bio_basics": {
+      "name": "Biology & Chemistry Foundations",
+      "hours_required": 250,
+      "daily_tasks": ["Memorize key terms for 1h", "Review flashcards for 30m", "Read textbook chapter for 1h"]
+    },
+    "anatomy": {
+      "name": "Human Anatomy",
+      "hours_required": 300,
+      "daily_tasks": ["Study physiological diagrams for 1h", "Watch lecture for 1h"]
+    },
+    "clinical": {
+      "name": "Clinical Practice & Ethics",
+      "hours_required": 400,
+      "daily_tasks": ["Shadowing/Simulation for 2h", "Review case studies for 1h"]
+    },
+    "finance": {
+      "name": "Financial Accounting",
+      "hours_required": 120,
+      "daily_tasks": ["Analyze balance sheets for 1h", "Practice Excel modeling for 1h"]
+    },
+    "marketing": {
+      "name": "Growth & Marketing",
+      "hours_required": 100,
+      "daily_tasks": ["Write copy for 30m", "Analyze ad campaigns for 1h"]
+    },
+    "leadership": {
+      "name": "Leadership & Management",
+      "hours_required": 80,
+      "daily_tasks": ["Read leadership case study for 30m", "Practice public speaking for 30m"]
+    },
+    "product": {
+      "name": "Product Management",
+      "hours_required": 150,
+      "daily_tasks": ["Write product specs for 1h", "Conduct user interviews for 1h"]
+    },
+    "ui_ux": {
+      "name": "UI/UX Design",
+      "hours_required": 180,
+      "daily_tasks": ["Create wireframes for 1h", "Study user psychology for 30m"]
+    },
+    "color_theory": {
+      "name": "Color Theory & Typography",
+      "hours_required": 60,
+      "daily_tasks": ["Analyze existing designs for 30m", "Create mood boards for 30m"]
+    },
+    "math_basics": {
+      "name": "Calculus & Linear Algebra",
+      "hours_required": 200,
+      "daily_tasks": ["Solve math problems for 1.5h", "Watch concept lecture for 30m"]
+    },
+    "stats": {
+      "name": "Probability & Statistics",
+      "hours_required": 150,
+      "daily_tasks": ["Work on statistical models for 1h", "Analyze datasets for 1h"]
+    },
+    "ml": {
+      "name": "Machine Learning",
+      "hours_required": 350,
+      "daily_tasks": ["Train models for 1h", "Read research papers for 1h"]
+    },
+    "generic": {
+      "name": "General Professional Development",
+      "hours_required": 50,
+      "daily_tasks": ["Network on LinkedIn for 30m", "Read industry news for 30m"]
+    }
+  }
+}
