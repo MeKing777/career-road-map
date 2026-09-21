@@ -1278,7 +1278,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             <p style={{ maxWidth: '540px', margin: '0 auto 2rem auto' }}>
               Generate escalating non-repeating learning stages, evidence-based task verification, and real-world internship entry points tailored to your role.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            <div className="form-actions form-actions--center">
               <button className="btn-primary" onClick={() => setStep(1)}>
                 Build Your Roadmap <ArrowRight size={18} />
               </button>
@@ -1333,7 +1333,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             <div className="input-group">
               <label className="input-label">Current Skill Level in Target Area</label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem' }}>
+              <div className="choice-grid choice-grid--three">
                 {['Beginner', 'Intermediate', 'Advanced'].map(lvl => (
                   <button
                     key={lvl}
@@ -1353,7 +1353,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {error && <div className="error-msg" style={{ marginBottom: '1rem' }}><AlertCircle size={14} /> {error}</div>}
             
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="form-actions">
               <button className="btn-secondary" onClick={handleBack}><ArrowLeft size={18} /> Back</button>
               <button className="btn-primary" style={{ flex: 1 }} onClick={handleNext}>Continue <ArrowRight size={18} /></button>
             </div>
@@ -1396,7 +1396,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {error && <div className="error-msg" style={{ marginBottom: '1rem' }}><AlertCircle size={14} /> {error}</div>}
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="form-actions">
               <button className="btn-secondary" onClick={handleBack}><ArrowLeft size={18} /> Back</button>
               <button className="btn-primary" style={{ flex: 1 }} onClick={handleNext}>Continue <ArrowRight size={18} /></button>
             </div>
@@ -1410,7 +1410,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             <h2>Select or Enter Your Career Path</h2>
             <p>Pick a popular career path or type any custom role.</p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <div className="career-preset-grid">
               {careerPresets.map(cp => {
                 const IconComp = cp.icon;
                 const isSelected = formData.goal.toLowerCase().trim() === cp.title.toLowerCase().trim();
@@ -1453,7 +1453,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             <div className="input-group">
               <label className="input-label">Target Completion Timeline</label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+              <div className="choice-grid choice-grid--four">
                 {['6 Months', '1 Year', '2 Years', '3+ Years'].map(t => (
                   <button
                     key={t}
@@ -1475,7 +1475,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {error && <div className="error-msg" style={{ marginBottom: '1rem' }}><AlertCircle size={14} /> {error}</div>}
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="form-actions">
               <button className="btn-secondary" onClick={handleBack}><ArrowLeft size={18} /> Back</button>
               <button className="btn-primary" style={{ flex: 1 }} onClick={handleNext}>Continue <ArrowRight size={18} /></button>
             </div>
@@ -1490,19 +1490,19 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             <h2>Weekly Learning Availability</h2>
             <p>Select the days you can dedicate to studying and specify your free hours.</p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem', maxHeight: '360px', overflowY: 'auto', paddingRight: '0.5rem' }}>
+            <div className="availability-list">
               {days.map(day => {
                 const isSelected = !!formData.schedule[day];
                 return (
                   <div 
                     key={day} 
-                    className="glass-card"
+                    className="glass-card availability-card"
                     style={{
                       background: isSelected ? 'rgba(99, 102, 241, 0.1)' : 'rgba(2, 6, 23, 0.3)',
                       borderColor: isSelected ? 'var(--accent-primary)' : 'var(--glass-border)'
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => toggleDay(day)}>
+                    <div className="availability-card__header" onClick={() => toggleDay(day)}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                         <div style={{ 
                           width: 22, height: 22, borderRadius: 6, 
@@ -1521,7 +1521,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                     </div>
 
                     {isSelected && (
-                      <div className="fade-enter" style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                      <div className="fade-enter schedule-fields">
                         <div style={{ flex: 1 }}>
                           <label className="input-label" style={{ fontSize: '0.75rem' }}>Hours Free</label>
                           <input 
@@ -1557,7 +1557,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {error && <div className="error-msg" style={{ marginBottom: '1rem' }}><AlertCircle size={14} /> {error}</div>}
 
-            <div style={{ display: 'flex', gap: '1rem' }}>
+            <div className="form-actions">
               <button className="btn-secondary" onClick={handleBack}><ArrowLeft size={18} /> Back</button>
               <button className="btn-primary" style={{ flex: 1 }} onClick={handleNext}>
                 <Sparkles size={18} /> Generate Career Roadmap
@@ -1597,9 +1597,9 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
         const studyStage = nextStudyTask?.stage || 'Job Ready';
 
         return (
-          <div className="fade-enter" style={{ width: '100%' }}>
+          <div className="fade-enter dashboard" style={{ width: '100%' }}>
             {/* HEADER DASHBOARD BAR */}
-            <div style={{ 
+            <div className="dashboard-header" style={{
               display: 'flex', 
               justifyContent: 'space-between', 
               alignItems: 'center', 
@@ -1610,7 +1610,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
               paddingBottom: '1rem'
             }}>
               <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
+                <div className="dashboard-header__meta" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
                   <span className="badge-puter"><Sparkles size={12} /> Dynamic Career Roadmap</span>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Location: {formData.nationality || 'Global'}</span>
                 </div>
@@ -1620,7 +1620,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
               </div>
 
               {/* QUICK CAREER SWITCHER DROPDOWN */}
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+              <div className="dashboard-actions" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
                 <select
                   className="text-input"
                   style={{ padding: '0.45rem 0.75rem', fontSize: '0.8rem', width: 'auto' }}
@@ -1673,8 +1673,8 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             </div>
 
             {/* STAGE PROGRESSION TRACKER */}
-            <div className="glass-card" style={{ marginBottom: '1.25rem', padding: '0.85rem 1.25rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
+            <div className="glass-card stage-tracker" style={{ marginBottom: '1.25rem', padding: '0.85rem 1.25rem' }}>
+              <div className="stage-tracker__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
                 <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
                   Escalating Career Stage Progression
                 </span>
@@ -1683,7 +1683,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                 </span>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.5rem' }}>
+              <div className="stage-grid">
                 {['Beginner', 'Intermediate', 'Advanced', 'Job Ready'].map((stg, i) => (
                   <div
                     key={stg}
@@ -1710,7 +1710,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             </div>
 
             {/* NAVIGATION TABS (5 MODULE SYSTEM) */}
-            <div className="tab-container" style={{ flexWrap: 'wrap', gap: '0.4rem' }}>
+            <div className="tab-container" style={{ gap: '0.4rem' }}>
               <button className={`tab-btn ${activeTab === 'profile' ? 'active' : ''}`} onClick={() => setActiveTab('profile')}>
                 <User size={15} /> Profile
               </button>
@@ -2137,8 +2137,8 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                             background: isVerified ? 'rgba(16, 185, 129, 0.05)' : 'rgba(15, 23, 42, 0.6)'
                           }}
                         >
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem' }}>
-                            <div style={{ display: 'flex', gap: '0.75rem' }}>
+                        <div className="task-card__header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem' }}>
+                            <div className="task-card__summary" style={{ display: 'flex', gap: '0.75rem' }}>
                               <div style={{ marginTop: '0.1rem' }}>
                                 {isVerified ? (
                                   <CheckCircle2 size={20} color="var(--accent-emerald)" />
@@ -2181,11 +2181,11 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                             </button>
                           </div>
 
-                          <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', margin: '0.6rem 0 0.5rem 2rem' }}>
+                          <p className="task-card__description" style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', margin: '0.6rem 0 0.5rem 2rem' }}>
                             {task.description}
                           </p>
 
-                          <div style={{ marginLeft: '2rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                          <div className="task-card__details" style={{ marginLeft: '2rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
                             {task.prerequisites && <div><strong>Prerequisites:</strong> {task.prerequisites}</div>}
                             {task.expectedOutcome && <div><strong>Expected Deliverable:</strong> {task.expectedOutcome}</div>}
                             
@@ -2706,8 +2706,8 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {/* COURSE PROGRESS VERIFICATION MODAL */}
             {activeCourse && (
-              <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, padding: '1rem' }}>
-                <div className="glass-card fade-enter" style={{ maxWidth: '620px', width: '100%', maxHeight: '90vh', overflowY: 'auto' }}>
+              <div className="modal-backdrop" style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 9999, padding: '1rem' }}>
+                <div className="glass-card fade-enter mobile-modal" style={{ maxWidth: '620px', width: '100%', maxHeight: '90vh', overflowY: 'auto' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.75rem' }}>
                     <div>
                       <span className="badge-puter" style={{ fontSize: '0.7rem' }}>Course Progress Scanner</span>
@@ -2746,13 +2746,13 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
             {/* TASK EVIDENCE VERIFICATION MODAL */}
             {activeVerifyTask && (
-              <div style={{
+              <div className="modal-backdrop" style={{
                 position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
                 background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 zIndex: 9999, padding: '1rem'
               }}>
-                <div className="glass-card fade-enter" style={{ maxWidth: '620px', width: '100%', maxHeight: '90vh', overflowY: 'auto' }}>
+                <div className="glass-card fade-enter mobile-modal" style={{ maxWidth: '620px', width: '100%', maxHeight: '90vh', overflowY: 'auto' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: '0.75rem' }}>
                     <div>
                       <span className="badge-puter" style={{ fontSize: '0.7rem' }}>
@@ -2847,7 +2847,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
             )}
 
             {/* ADJUST BUTTON */}
-            <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
+            <div className="form-actions form-actions--center" style={{ marginTop: '2rem' }}>
               <button className="btn-secondary" onClick={() => setStep(4)}>
                 <RefreshCw size={16} /> Change Target Career / Schedule
               </button>
