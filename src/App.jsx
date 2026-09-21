@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import './index.css';
 import { exportRoadmapAsPDF, exportRoadmapAsWord } from './utils/exportDocuments';
-import { getCareerRoadmap } from './data/careerDatabase';
+import { getCareerRoadmap, LEARNER_LOCATIONS, filterCoursesByLocation, getCoursesForLocation } from './data/careerDatabase';
 import { puter } from '@heyputer/puter.js';
 
 if (typeof window !== 'undefined' && !window.puter) {
@@ -240,18 +240,21 @@ You MUST return your output strictly as a single valid JSON object, no markdown 
 // --- COURSE RECOMMENDATION AI ---
 async function fetchCourseRecommendationsAI(formData, roadmapData) {
   const skillNames = (roadmapData?.skills || []).map(s => s.name).join(', ');
+  const location = formData.nationality || 'Global (Online)';
 
   const prompt = `
-You are a career learning advisor. Recommend real, well-known online courses (a mix of FREE and PAID) that would help someone become a "${formData.goal}".
-Their current level is "${formData.level}" and key skills to build are: ${skillNames || formData.goal}.
+You are a career learning advisor. Recommend real, well-known courses (a mix of FREE and PAID) that would help someone become a "${formData.goal}".
+Their current level is "${formData.level}", location is "${location}", and key skills to build are: ${skillNames || formData.goal}.
 
+Only recommend courses available for learners in "${location}" (global online options plus location-relevant providers).
 Return 8 courses total: at least 3 free and at least 3 paid.
+Each course MUST include "availableLocations" as an array that includes "${location}" and/or "Global (Online)".
 
 You MUST return your output strictly as a single valid JSON object, no markdown fences, no extra text:
 {
   "courses": [
-    { "title": "Course Name", "platform": "Platform Name", "type": "free", "price": "Free", "level": "Beginner", "url": "https://..." },
-    { "title": "Course Name", "platform": "Platform Name", "type": "paid", "price": "$49.99", "level": "Intermediate", "url": "https://..." }
+    { "title": "Course Name", "platform": "Platform Name", "type": "free", "price": "Free", "level": "Beginner", "url": "https://...", "availableLocations": ["${location}", "Global (Online)"] },
+    { "title": "Course Name", "platform": "Platform Name", "type": "paid", "price": "$49.99", "level": "Intermediate", "url": "https://...", "availableLocations": ["Global (Online)"] }
   ]
 }
 `;
@@ -262,10 +265,12 @@ You MUST return your output strictly as a single valid JSON object, no markdown 
     if (!jsonMatch) throw new Error("AI did not return valid JSON content.");
     const parsed = JSON.parse(jsonMatch[0]);
     if (!Array.isArray(parsed.courses)) throw new Error("Malformed course data.");
-    return parsed.courses;
+    const filtered = filterCoursesByLocation(parsed.courses, location);
+    if (filtered.length) return filtered;
+    return getCoursesForLocation(roadmapData?.courses || [], formData.goal, location);
   } catch (err) {
     console.error("Course recommendation AI error, using fallback database courses:", err);
-    return roadmapData?.courses || [];
+    return getCoursesForLocation(roadmapData?.courses || [], formData.goal, location);
   }
 }
 
@@ -280,8 +285,8 @@ async function synthesizeRoadmapAI(formData) {
     scheduleString += `- ${day}: ${hrs} hours in the ${data.time}\n`;
   });
 
-  // Fetch baseline curated career roadmap from local knowledge base
-  const baseCareerData = getCareerRoadmap(formData.goal, formData.level, formData.timeline);
+  // Fetch baseline curated career roadmap from local knowledge base (location filters courses)
+  const baseCareerData = getCareerRoadmap(formData.goal, formData.level, formData.timeline, formData.nationality);
 
   const prompt = `
 You are an expert career strategist and AI mentor. Create a comprehensive, realistic, step-by-step career roadmap for a user based on these details:
@@ -299,6 +304,7 @@ CRITICAL RULES:
 1. Every stage (Beginner -> Intermediate -> Advanced -> Job Ready) MUST be strictly non-repeating and escalating in difficulty.
 2. Higher stages MUST explicitly reference and build upon skills mastered in previous stages (e.g. "Building on Python mastered in Stage 1, construct predictive ML models...").
 3. Do NOT use generic boilerplate phrasing ("Master baseline tools and principles"). Make every task, topic, and course specific to "${formData.goal}".
+4. Courses MUST be available for the learner's location "${formData.nationality}". Prefer global online courses plus providers relevant to that location. Each course must include "availableLocations".
 
 You MUST return your output strictly as a single valid JSON object without markdown fences, code blocks, or extra text.
 
@@ -334,7 +340,8 @@ Required JSON Structure:
       "prerequisites": "Prerequisite knowledge needed from earlier stage",
       "learnOutcome": "What the user will learn",
       "relatedSkills": ["Skill A", "Skill B"],
-      "url": "https://..."
+      "url": "https://...",
+      "availableLocations": ["${formData.nationality}", "Global (Online)"]
     }
   ],
   "technologies": ["Tech 1", "Tech 2", "Tool 3"],
@@ -452,7 +459,12 @@ Required JSON Structure:
     // Merge missing fields with local knowledge base to guarantee 100% complete career schema
     if (!parsed.careerOverview) parsed.careerOverview = baseCareerData.careerOverview;
     if (!parsed.requiredSkills) parsed.requiredSkills = baseCareerData.requiredSkills;
-    if (!parsed.courses || !parsed.courses.length) parsed.courses = baseCareerData.courses;
+    if (!parsed.courses || !parsed.courses.length) {
+      parsed.courses = baseCareerData.courses;
+    } else {
+      parsed.courses = getCoursesForLocation(parsed.courses, formData.goal, formData.nationality);
+      if (!parsed.courses.length) parsed.courses = baseCareerData.courses;
+    }
     if (!parsed.technologies || !parsed.technologies.length) parsed.technologies = baseCareerData.technologies;
     parsed.tasks = ensureTasksForEveryStage(parsed.tasks, baseCareerData.tasks);
     if (!parsed.projects || !parsed.projects.length) parsed.projects = baseCareerData.projects;
@@ -468,7 +480,7 @@ Required JSON Structure:
 
 function generateFallbackData(formData, hoursPerWeek, baseCareerData) {
   const currentAge = parseInt(formData.age) || 21;
-  const careerData = baseCareerData || getCareerRoadmap(formData.goal, formData.level, formData.timeline);
+  const careerData = baseCareerData || getCareerRoadmap(formData.goal, formData.level, formData.timeline, formData.nationality);
 
   const sampleTasks = (careerData.tasks || []).map(t => t.title);
   let taskIdx = 0;
@@ -834,7 +846,7 @@ export default function App() {
       const ageNum = parseInt(formData.age);
       if (!formData.age || isNaN(ageNum) || ageNum < 10 || ageNum > 100) return setError('Enter a valid age between 10 and 100');
     }
-    if (step === 3 && !formData.nationality.trim()) return setError('Please enter your location or nationality');
+    if (step === 3 && !formData.nationality.trim()) return setError('Please select your location');
     if (step === 4 && !formData.goal.trim()) return setError('Please type or select your career goal');
     if (step === 5) {
       if (Object.keys(formData.schedule).length === 0) return setError('Please select at least one available day.');
@@ -1365,19 +1377,29 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
           <div className="fade-enter">
             <span className="badge-puter" style={{ marginBottom: '1rem' }}>Step 3 of 5</span>
             <h2>Location & Learning Preference</h2>
-            <p>Helps Puter AI recommend localized internships, open-source platforms, and job opportunities.</p>
+            <p>Select your location so we can show courses available there (global online + local options).</p>
 
             <div className="input-group">
-              <label className="input-label">Location / Country</label>
-              <input 
-                type="text" 
-                className="text-input" 
-                placeholder="e.g. United States, India, Germany, Canada, Global" 
+              <label className="input-label">Location <span style={{ color: 'var(--accent-secondary)' }}>*</span></label>
+              <select
+                className="text-input"
                 value={formData.nationality}
-                onChange={e => setFormData({ ...formData, nationality: e.target.value })} 
-                autoFocus 
-                onKeyDown={e => e.key === 'Enter' && handleNext()} 
-              />
+                onChange={e => setFormData({ ...formData, nationality: e.target.value })}
+                autoFocus
+              >
+                <option value="">Select your location</option>
+                {LEARNER_LOCATIONS.map(loc => (
+                  <option key={loc} value={loc}>{loc}</option>
+                ))}
+                {formData.nationality && !LEARNER_LOCATIONS.includes(formData.nationality) && (
+                  <option value={formData.nationality}>{formData.nationality}</option>
+                )}
+              </select>
+              {formData.nationality && (
+                <p style={{ margin: '0.55rem 0 0', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                  Courses shown later will only include ones available for <strong style={{ color: 'var(--text-primary)' }}>{formData.nationality}</strong>.
+                </p>
+              )}
             </div>
 
             <div className="input-group">
@@ -2010,7 +2032,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
               <div className="fade-enter">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                    Recommended learning courses and topics specifically for <strong>{formData.goal}</strong>.
+                    Courses for <strong>{formData.goal}</strong> available in <strong>{formData.nationality || 'Global (Online)'}</strong> (global online + local).
                   </p>
                   <button className="btn-primary" style={{ padding: '0.4rem 0.8rem', fontSize: '0.78rem' }} onClick={loadCourseRecommendations} disabled={isLoadingCourses}>
                     {isLoadingCourses
@@ -2020,20 +2042,42 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                  {(courses || roadmapData.courses || []).map((course, idx) => {
+                  {(() => {
+                    const locationCourses = filterCoursesByLocation(courses || roadmapData.courses || [], formData.nationality);
+                    if (!locationCourses.length) {
+                      return (
+                        <div className="glass-card" style={{ textAlign: 'center', padding: '1.5rem' }}>
+                          <Globe size={22} color="var(--accent-cyan)" style={{ marginBottom: '0.5rem' }} />
+                          <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
+                            No courses available for <strong>{formData.nationality || 'your location'}</strong> yet. Try Global (Online) or refresh AI recommendations.
+                          </p>
+                        </div>
+                      );
+                    }
+                    return locationCourses.map((course, idx) => {
                     const courseRecord = verifiedCourses[course.title];
                     const isDone = courseRecord?.status === 'verified';
+                    const availabilityLabel = (course.availableLocations || ['Global (Online)']).includes(formData.nationality) && formData.nationality !== 'Global (Online)'
+                      ? formData.nationality
+                      : 'Global (Online)';
                     return (
                       <div key={idx} className="glass-card" style={{ borderColor: isDone ? 'var(--accent-emerald)' : 'var(--glass-border)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.5rem' }}>
                           <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem', flexWrap: 'wrap' }}>
                               <span style={{
                                 fontSize: '0.7rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '999px',
                                 color: course.type === 'free' ? 'var(--accent-emerald)' : 'var(--accent-secondary)',
                                 background: course.type === 'free' ? 'rgba(16,185,129,0.12)' : 'rgba(168,85,247,0.12)'
                               }}>
                                 {course.type === 'free' ? 'Free' : (course.price || 'Paid')}
+                              </span>
+                              <span style={{
+                                fontSize: '0.7rem', fontWeight: 600, padding: '0.15rem 0.5rem', borderRadius: '999px',
+                                color: 'var(--accent-cyan)',
+                                background: 'rgba(34, 211, 238, 0.12)'
+                              }}>
+                                Available: {availabilityLabel}
                               </span>
                               <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{course.difficulty || 'All Levels'} • {course.platform || 'Online'}</span>
                             </div>
@@ -2084,7 +2128,8 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                         </div>
                       </div>
                     );
-                  })}
+                  });
+                  })()}
                 </div>
               </div>
             )}

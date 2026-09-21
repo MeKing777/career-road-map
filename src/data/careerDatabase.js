@@ -44,6 +44,400 @@ export function normalizeCareerKey(input = '') {
   return 'custom';
 }
 
+/** Locations learners can select during setup. */
+export const LEARNER_LOCATIONS = [
+  'Global (Online)',
+  'United States',
+  'India',
+  'United Kingdom',
+  'Canada',
+  'Germany',
+  'Australia',
+  'Singapore',
+  'United Arab Emirates',
+  'Netherlands',
+  'Japan',
+  'Brazil'
+];
+
+const GLOBAL_ONLINE = 'Global (Online)';
+
+/** Extra courses that only appear for specific locations (on top of global/online courses). */
+const REGIONAL_COURSES_BY_CAREER = {
+  web_developer: {
+    India: [
+      {
+        title: 'NPTEL Programming, Data Structures and Algorithms using Python',
+        whyRequired: 'IIT-backed foundation widely recognized by Indian employers for web and software roles.',
+        difficulty: 'Beginner',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Basic computer literacy',
+        learnOutcome: 'Strong programming fundamentals used across Indian university and hiring pipelines.',
+        relatedSkills: ['Python', 'DSA', 'Problem Solving'],
+        url: 'https://nptel.ac.in',
+        platform: 'NPTEL'
+      },
+      {
+        title: 'Scaler Academy Frontend Engineering Essentials',
+        whyRequired: 'Industry-oriented frontend track aligned with Indian product-company hiring bar.',
+        difficulty: 'Intermediate',
+        price: 'Paid',
+        type: 'paid',
+        prerequisites: 'HTML, CSS, and JavaScript basics',
+        learnOutcome: 'Build interview-ready React projects with system-design awareness for Indian tech roles.',
+        relatedSkills: ['React.js', 'JavaScript', 'System Design'],
+        url: 'https://www.scaler.com',
+        platform: 'Scaler'
+      }
+    ],
+    'United States': [
+      {
+        title: 'freeCodeCamp Responsive Web Design Certification',
+        whyRequired: 'Widely accepted US entry credential for junior web developer portfolios.',
+        difficulty: 'Beginner',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Ship accessible, responsive pages and publish certification proof for US applications.',
+        relatedSkills: ['HTML5', 'CSS3', 'Accessibility'],
+        url: 'https://www.freecodecamp.org/learn/2022/responsive-web-design/',
+        platform: 'freeCodeCamp'
+      }
+    ],
+    'United Kingdom': [
+      {
+        title: 'FutureLearn Coding for Beginners / Web Foundations',
+        whyRequired: 'UK university-partnered intro path useful for UK apprenticeships and junior roles.',
+        difficulty: 'Beginner',
+        price: 'Free / Upgrade',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Learn core web concepts with UK-recognized learning platform credentials.',
+        relatedSkills: ['HTML', 'CSS', 'JavaScript'],
+        url: 'https://www.futurelearn.com',
+        platform: 'FutureLearn'
+      }
+    ],
+    Germany: [
+      {
+        title: 'openHPI / Hasso Plattner Web Technology Courses',
+        whyRequired: 'German research-university MOOCs valued for EU web engineering careers.',
+        difficulty: 'Intermediate',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Basic programming',
+        learnOutcome: 'Understand modern web architectures taught in German/EU academic style.',
+        relatedSkills: ['Web Architecture', 'JavaScript', 'APIs'],
+        url: 'https://open.hpi.de',
+        platform: 'openHPI'
+      }
+    ],
+    Canada: [
+      {
+        title: 'University of Toronto / Coursera Web Development Foundations',
+        whyRequired: 'Canadian university pathway popular for local co-op and junior web hiring.',
+        difficulty: 'Beginner',
+        price: 'Free to Audit',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Build foundational web apps aligned with Canadian CS curricula.',
+        relatedSkills: ['HTML', 'CSS', 'JavaScript'],
+        url: 'https://www.coursera.org',
+        platform: 'Coursera'
+      }
+    ],
+    Singapore: [
+      {
+        title: 'SkillsFuture / Google Career Certificates (Web & Digital)',
+        whyRequired: 'SkillsFuture-aligned pathway commonly used for Singapore tech upskilling.',
+        difficulty: 'Beginner',
+        price: 'Subsidized / Paid',
+        type: 'paid',
+        prerequisites: 'None',
+        learnOutcome: 'Earn credentials recognized in Singapore digital workforce programs.',
+        relatedSkills: ['Web Development', 'Digital Skills'],
+        url: 'https://www.skillsfuture.gov.sg',
+        platform: 'SkillsFuture'
+      }
+    ]
+  },
+  data_scientist: {
+    India: [
+      {
+        title: 'NPTEL Data Science for Engineers',
+        whyRequired: 'Core DS theory used across Indian engineering colleges and analytics hiring.',
+        difficulty: 'Intermediate',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Basic Python and statistics',
+        learnOutcome: 'Apply statistical and ML basics with an India-recognized NPTEL credential.',
+        relatedSkills: ['Statistics', 'Python', 'Machine Learning'],
+        url: 'https://nptel.ac.in',
+        platform: 'NPTEL'
+      }
+    ],
+    'United States': [
+      {
+        title: 'IBM Data Science Professional Certificate',
+        whyRequired: 'Common US hiring signal for junior data analyst / data scientist roles.',
+        difficulty: 'Beginner',
+        price: 'Free Trial / Subscription',
+        type: 'paid',
+        prerequisites: 'None',
+        learnOutcome: 'Build notebooks, SQL workflows, and a starter DS portfolio for US markets.',
+        relatedSkills: ['Python', 'SQL', 'Data Visualization'],
+        url: 'https://www.coursera.org',
+        platform: 'Coursera'
+      }
+    ],
+    'United Kingdom': [
+      {
+        title: 'Imperial College / Coursera Mathematics for Machine Learning',
+        whyRequired: 'UK-aligned math foundation frequently referenced for UK DS graduate schemes.',
+        difficulty: 'Intermediate',
+        price: 'Free to Audit',
+        type: 'free',
+        prerequisites: 'High-school math',
+        learnOutcome: 'Strengthen linear algebra and calculus used in ML interviews in the UK.',
+        relatedSkills: ['Linear Algebra', 'Calculus', 'Machine Learning'],
+        url: 'https://www.coursera.org',
+        platform: 'Coursera'
+      }
+    ]
+  },
+  cybersecurity_analyst: {
+    India: [
+      {
+        title: 'NPTEL Introduction to Cyber Security',
+        whyRequired: 'Entry cyber fundamentals recognized across Indian academia and SOC hiring funnels.',
+        difficulty: 'Beginner',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Basic networking awareness',
+        learnOutcome: 'Understand threats, controls, and security basics with an NPTEL certificate.',
+        relatedSkills: ['Security Fundamentals', 'Networking'],
+        url: 'https://nptel.ac.in',
+        platform: 'NPTEL'
+      }
+    ],
+    'United States': [
+      {
+        title: 'CompTIA Security+ (Official / Pearson Vue Prep)',
+        whyRequired: 'Standard US DoD and employer baseline cert for junior cybersecurity roles.',
+        difficulty: 'Beginner',
+        price: 'Paid Exam',
+        type: 'paid',
+        prerequisites: 'Basic IT knowledge',
+        learnOutcome: 'Prepare for Security+ domains used widely in US entry-level SOC jobs.',
+        relatedSkills: ['Security+', 'Risk Management', 'Threats'],
+        url: 'https://www.comptia.org',
+        platform: 'CompTIA'
+      }
+    ],
+    'United Kingdom': [
+      {
+        title: 'Cyber Security Fundamentals (Open University / FutureLearn)',
+        whyRequired: 'UK pathway aligned with NCSC-informed cyber literacy for UK starters.',
+        difficulty: 'Beginner',
+        price: 'Free / Upgrade',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Learn UK-relevant cyber hygiene, threats, and defensive basics.',
+        relatedSkills: ['Cyber Awareness', 'Risk', 'Networking'],
+        url: 'https://www.futurelearn.com',
+        platform: 'FutureLearn'
+      }
+    ]
+  },
+  cloud_engineer: {
+    India: [
+      {
+        title: 'AWS Cloud Practitioner Essentials (India / APAC mentoring tracks)',
+        whyRequired: 'Entry AWS cert path commonly used by Indian cloud and DevOps freshers.',
+        difficulty: 'Beginner',
+        price: 'Free training / Paid exam',
+        type: 'free',
+        prerequisites: 'Basic IT knowledge',
+        learnOutcome: 'Explain core AWS services and cloud value for India/APAC roles.',
+        relatedSkills: ['AWS', 'Cloud Fundamentals'],
+        url: 'https://aws.amazon.com/training/',
+        platform: 'AWS'
+      }
+    ],
+    'United States': [
+      {
+        title: 'Google Cloud Digital Leader / Associate Cloud Engineer Prep',
+        whyRequired: 'Strong US multi-cloud signal alongside AWS for junior cloud roles.',
+        difficulty: 'Beginner',
+        price: 'Free / Paid',
+        type: 'free',
+        prerequisites: 'Basic networking',
+        learnOutcome: 'Map GCP services to real architectures used in US cloud teams.',
+        relatedSkills: ['GCP', 'Cloud Architecture'],
+        url: 'https://cloud.google.com/learn',
+        platform: 'Google Cloud'
+      }
+    ],
+    Germany: [
+      {
+        title: 'Azure Fundamentals (AZ-900) – EU / DACH Career Path',
+        whyRequired: 'Microsoft Azure demand is high across German enterprise IT.',
+        difficulty: 'Beginner',
+        price: 'Free learning / Paid exam',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Cover Azure core services used heavily in German corporate cloud migrations.',
+        relatedSkills: ['Azure', 'Cloud Fundamentals'],
+        url: 'https://learn.microsoft.com',
+        platform: 'Microsoft Learn'
+      }
+    ]
+  },
+  mobile_developer: {
+    India: [
+      {
+        title: 'Google India / Android Developer Kotlin Fundamentals',
+        whyRequired: 'Android-first market in India makes Kotlin the strongest junior mobile path.',
+        difficulty: 'Beginner',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Basic programming',
+        learnOutcome: 'Build Android apps with Kotlin aligned to India mobile hiring needs.',
+        relatedSkills: ['Kotlin', 'Android'],
+        url: 'https://developer.android.com/courses',
+        platform: 'Google Developers'
+      }
+    ],
+    'United States': [
+      {
+        title: 'Apple Developer SwiftUI Tutorials',
+        whyRequired: 'iOS roles in the US strongly prefer Swift/SwiftUI portfolio proof.',
+        difficulty: 'Beginner',
+        price: 'Free',
+        type: 'free',
+        prerequisites: 'Mac recommended',
+        learnOutcome: 'Ship a native iOS UI with SwiftUI following Apple’s official curriculum.',
+        relatedSkills: ['Swift', 'SwiftUI', 'iOS'],
+        url: 'https://developer.apple.com/tutorials/swiftui',
+        platform: 'Apple'
+      }
+    ],
+    Singapore: [
+      {
+        title: 'IMDA / SkillsFuture Mobile App Development Short Courses',
+        whyRequired: 'Singapore workforce programs often fund mobile upskilling via SkillsFuture.',
+        difficulty: 'Beginner',
+        price: 'Subsidized',
+        type: 'paid',
+        prerequisites: 'None',
+        learnOutcome: 'Complete a Singapore-recognized mobile development short course pathway.',
+        relatedSkills: ['Mobile Development', 'Flutter / Native'],
+        url: 'https://www.skillsfuture.gov.sg',
+        platform: 'SkillsFuture'
+      }
+    ]
+  },
+  ui_ux_designer: {
+    India: [
+      {
+        title: 'NID / Interaction Design Foundations (Online Modules)',
+        whyRequired: 'Design-education culture in India values strong interaction and research foundations.',
+        difficulty: 'Beginner',
+        price: 'Free / Paid',
+        type: 'free',
+        prerequisites: 'None',
+        learnOutcome: 'Practice research-led design thinking valued by Indian product teams.',
+        relatedSkills: ['Design Thinking', 'Interaction Design'],
+        url: 'https://www.nid.edu',
+        platform: 'NID'
+      }
+    ],
+    'United States': [
+      {
+        title: 'NN/g UX Certification Path (Intro Modules)',
+        whyRequired: 'Nielsen Norman Group credentials are a strong US UX hiring signal.',
+        difficulty: 'Intermediate',
+        price: 'Paid',
+        type: 'paid',
+        prerequisites: 'Basic UX familiarity',
+        learnOutcome: 'Apply evidence-based UX methods recognized by US product orgs.',
+        relatedSkills: ['Usability', 'UX Research'],
+        url: 'https://www.nngroup.com',
+        platform: 'NN/g'
+      }
+    ],
+    Netherlands: [
+      {
+        title: 'Interaction Design Foundation – UX Career Track (EU)',
+        whyRequired: 'Popular EU remote-friendly UX learning path for Netherlands product roles.',
+        difficulty: 'Beginner',
+        price: 'Subscription',
+        type: 'paid',
+        prerequisites: 'None',
+        learnOutcome: 'Build a research-backed UX portfolio suited to EU product teams.',
+        relatedSkills: ['UX Research', 'Usability Testing'],
+        url: 'https://www.interaction-design.org',
+        platform: 'IDF'
+      }
+    ]
+  }
+};
+
+/**
+ * Returns true when a course is available for the learner's selected location.
+ * Global/online courses are available everywhere; regional courses only for their locations.
+ */
+export function isCourseAvailableInLocation(course, location) {
+  if (!course) return false;
+  const locs = course.availableLocations?.length
+    ? course.availableLocations
+    : [GLOBAL_ONLINE];
+
+  if (!location || location === GLOBAL_ONLINE) {
+    return locs.includes(GLOBAL_ONLINE) || locs.includes('Global');
+  }
+
+  return locs.includes(location) || locs.includes(GLOBAL_ONLINE) || locs.includes('Global');
+}
+
+export function filterCoursesByLocation(courses = [], location) {
+  return (courses || []).filter(course => isCourseAvailableInLocation(course, location));
+}
+
+function tagGlobalCourses(courses = []) {
+  return courses.map(course => ({
+    ...course,
+    availableLocations: course.availableLocations?.length
+      ? course.availableLocations
+      : [GLOBAL_ONLINE],
+    platform: course.platform || undefined
+  }));
+}
+
+function regionalCoursesFor(careerKey, location) {
+  if (!location || location === GLOBAL_ONLINE) return [];
+  const byLocation = REGIONAL_COURSES_BY_CAREER[careerKey]?.[location] || [];
+  return byLocation.map(course => ({
+    ...course,
+    availableLocations: [location]
+  }));
+}
+
+/**
+ * Merge global curated courses with location-specific courses, then keep only available ones.
+ */
+export function getCoursesForLocation(baseCourses = [], careerGoal = '', location = GLOBAL_ONLINE) {
+  const careerKey = normalizeCareerKey(careerGoal);
+  const tagged = tagGlobalCourses(baseCourses);
+  const regional = regionalCoursesFor(careerKey, location);
+  const merged = [...tagged];
+  regional.forEach(course => {
+    if (!merged.some(existing => existing.title === course.title)) merged.push(course);
+  });
+  return filterCoursesByLocation(merged, location);
+}
+
 export const CAREER_KNOWLEDGE_BASE = {
   web_developer: {
     careerOverview: {
@@ -2402,15 +2796,19 @@ function ensureCareerTaskStages(roadmap, careerGoal) {
 
 /**
  * Returns a complete, fully dynamic career roadmap for any requested career goal.
+ * When location is provided, courses are limited to those available for that location
+ * (global/online + location-specific).
  */
-export function getCareerRoadmap(careerGoal = '', level = 'Beginner', timeline = '1 Year') {
+export function getCareerRoadmap(careerGoal = '', level = 'Beginner', timeline = '1 Year', location = GLOBAL_ONLINE) {
   const key = normalizeCareerKey(careerGoal);
 
+  let roadmap;
   if (CAREER_KNOWLEDGE_BASE[key]) {
-    // Return a clone of the curated career knowledge base
-    return ensureCareerTaskStages(JSON.parse(JSON.stringify(CAREER_KNOWLEDGE_BASE[key])), careerGoal);
+    roadmap = ensureCareerTaskStages(JSON.parse(JSON.stringify(CAREER_KNOWLEDGE_BASE[key])), careerGoal);
+  } else {
+    roadmap = ensureCareerTaskStages(buildCustomCareerRoadmap(careerGoal, level, timeline), careerGoal);
   }
 
-  // Fallback to intelligent custom builder
-  return ensureCareerTaskStages(buildCustomCareerRoadmap(careerGoal, level, timeline), careerGoal);
+  roadmap.courses = getCoursesForLocation(roadmap.courses || [], careerGoal, location);
+  return roadmap;
 }
