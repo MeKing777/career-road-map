@@ -10,6 +10,7 @@ import {
 import './index.css';
 import { exportRoadmapAsPDF, exportRoadmapAsWord } from './utils/exportDocuments';
 import { getCareerRoadmap, LEARNER_LOCATIONS, filterCoursesByLocation, getCoursesForLocation } from './data/careerDatabase';
+import { ensureLiveCourseLinks } from './data/courseLinks';
 import { puter } from '@heyputer/puter.js';
 
 if (typeof window !== 'undefined' && !window.puter) {
@@ -243,12 +244,17 @@ async function fetchCourseRecommendationsAI(formData, roadmapData) {
   const location = formData.nationality || 'Global (Online)';
 
   const prompt = `
-You are a career learning advisor. Recommend real, well-known courses (a mix of FREE and PAID) that would help someone become a "${formData.goal}".
+You are a career learning advisor. Recommend real, currently available courses (a mix of FREE and PAID) that help someone become a "${formData.goal}".
 Their current level is "${formData.level}", location is "${location}", and key skills to build are: ${skillNames || formData.goal}.
 
-Only recommend courses available for learners in "${location}" (global online options plus location-relevant providers).
+Only recommend courses available for learners in "${location}" (global online options plus location-relevant providers such as NPTEL for India, SkillsFuture for Singapore, FutureLearn for UK, etc.).
 Return 8 courses total: at least 3 free and at least 3 paid.
 Each course MUST include "availableLocations" as an array that includes "${location}" and/or "Global (Online)".
+
+CRITICAL URL RULES:
+- "url" MUST be a specific course/certificate/path page (deep link), NEVER a platform homepage like https://www.coursera.org or https://www.udemy.com
+- Prefer well-known live pages such as Coursera professional-certificates/specializations, freeCodeCamp learn paths, TryHackMe paths, Microsoft Learn learning paths, AWS Skill Builder, NPTEL course pages
+- If unsure of the exact slug, use a platform SEARCH URL that includes the course title and "${formData.goal}" (and "${location}" when not Global), e.g. https://www.coursera.org/search?query=...
 
 You MUST return your output strictly as a single valid JSON object, no markdown fences, no extra text:
 {
@@ -266,7 +272,8 @@ You MUST return your output strictly as a single valid JSON object, no markdown 
     const parsed = JSON.parse(jsonMatch[0]);
     if (!Array.isArray(parsed.courses)) throw new Error("Malformed course data.");
     const filtered = filterCoursesByLocation(parsed.courses, location);
-    if (filtered.length) return filtered;
+    const withLiveLinks = ensureLiveCourseLinks(filtered, formData.goal, location);
+    if (withLiveLinks.length) return withLiveLinks;
     return getCoursesForLocation(roadmapData?.courses || [], formData.goal, location);
   } catch (err) {
     console.error("Course recommendation AI error, using fallback database courses:", err);
@@ -305,6 +312,7 @@ CRITICAL RULES:
 2. Higher stages MUST explicitly reference and build upon skills mastered in previous stages (e.g. "Building on Python mastered in Stage 1, construct predictive ML models...").
 3. Do NOT use generic boilerplate phrasing ("Master baseline tools and principles"). Make every task, topic, and course specific to "${formData.goal}".
 4. Courses MUST be available for the learner's location "${formData.nationality}". Prefer global online courses plus providers relevant to that location. Each course must include "availableLocations".
+5. Every course "url" MUST be a specific live course/certificate/path page OR a platform search URL for that exact course title — NEVER a bare homepage (coursera.org, udemy.com, edx.org roots).
 
 You MUST return your output strictly as a single valid JSON object without markdown fences, code blocks, or extra text.
 
@@ -465,6 +473,7 @@ Required JSON Structure:
       parsed.courses = getCoursesForLocation(parsed.courses, formData.goal, formData.nationality);
       if (!parsed.courses.length) parsed.courses = baseCareerData.courses;
     }
+    parsed.courses = ensureLiveCourseLinks(parsed.courses, formData.goal, formData.nationality);
     if (!parsed.technologies || !parsed.technologies.length) parsed.technologies = baseCareerData.technologies;
     parsed.tasks = ensureTasksForEveryStage(parsed.tasks, baseCareerData.tasks);
     if (!parsed.projects || !parsed.projects.length) parsed.projects = baseCareerData.projects;
@@ -2043,7 +2052,11 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
                   {(() => {
-                    const locationCourses = filterCoursesByLocation(courses || roadmapData.courses || [], formData.nationality);
+                    const locationCourses = ensureLiveCourseLinks(
+                      filterCoursesByLocation(courses || roadmapData.courses || [], formData.nationality),
+                      formData.goal,
+                      formData.nationality
+                    );
                     if (!locationCourses.length) {
                       return (
                         <div className="glass-card" style={{ textAlign: 'center', padding: '1.5rem' }}>
