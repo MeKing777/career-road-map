@@ -263,8 +263,8 @@ CRITICAL URL RULES:
 You MUST return your output strictly as a single valid JSON object, no markdown fences, no extra text:
 {
   "courses": [
-    { "title": "Course Name", "platform": "Platform Name", "type": "course", "price": "Course", "level": "Beginner", "url": "https://...", "availableLocations": ["${location}", "Global (Online)"] },
-    { "title": "Course Name", "platform": "Platform Name", "type": "course", "price": "Course", "level": "Intermediate", "url": "https://...", "availableLocations": ["Global (Online)"] }
+    { "title": "Course Name", "platform": "Platform Name", "level": "Beginner", "url": "https://...", "availableLocations": ["${location}", "Global (Online)"] },
+    { "title": "Course Name", "platform": "Platform Name", "level": "Intermediate", "url": "https://...", "availableLocations": ["Global (Online)"] }
   ]
 }
 `;
@@ -347,8 +347,6 @@ Required JSON Structure:
       "title": "Course Name",
       "whyRequired": "Why required for this career",
       "difficulty": "Beginner | Intermediate | Advanced",
-      "price": "Course",
-      "type": "course",
       "prerequisites": "Prerequisite knowledge needed from earlier stage",
       "learnOutcome": "What the user will learn",
       "relatedSkills": ["Skill A", "Skill B"],
@@ -1558,7 +1556,7 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                     {isSelected && (
                       <div className="fade-enter schedule-fields">
                         <div style={{ flex: 1 }}>
-                          <label className="input-label" style={{ fontSize: '0.75rem' }}>Hours Free</label>
+                          <label className="input-label" style={{ fontSize: '0.75rem' }}>Hours</label>
                           <input 
                             type="number" 
                             min="1" 

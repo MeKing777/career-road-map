@@ -72,8 +72,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'NPTEL Programming, Data Structures and Algorithms using Python',
         whyRequired: 'IIT-backed foundation widely recognized by Indian employers for web and software roles.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic computer literacy',
         learnOutcome: 'Strong programming fundamentals used across Indian university and hiring pipelines.',
         relatedSkills: ['Python', 'DSA', 'Problem Solving'],
@@ -84,8 +83,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Scaler Academy Frontend Engineering Essentials',
         whyRequired: 'Industry-oriented frontend track aligned with Indian product-company hiring bar.',
         difficulty: 'Intermediate',
-        price: 'Paid',
-        type: 'paid',
+
         prerequisites: 'HTML, CSS, and JavaScript basics',
         learnOutcome: 'Build interview-ready React projects with system-design awareness for Indian tech roles.',
         relatedSkills: ['React.js', 'JavaScript', 'System Design'],
@@ -98,8 +96,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'freeCodeCamp Responsive Web Design Certification',
         whyRequired: 'Widely accepted US entry credential for junior web developer portfolios.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Ship accessible, responsive pages and publish certification proof for US applications.',
         relatedSkills: ['HTML5', 'CSS3', 'Accessibility'],
@@ -112,8 +109,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'FutureLearn Coding for Beginners / Web Foundations',
         whyRequired: 'UK university-partnered intro path useful for UK apprenticeships and junior roles.',
         difficulty: 'Beginner',
-        price: 'Free / Upgrade',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Learn core web concepts with UK-recognized learning platform credentials.',
         relatedSkills: ['HTML', 'CSS', 'JavaScript'],
@@ -126,8 +122,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'openHPI / Hasso Plattner Web Technology Courses',
         whyRequired: 'German research-university MOOCs valued for EU web engineering careers.',
         difficulty: 'Intermediate',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic programming',
         learnOutcome: 'Understand modern web architectures taught in German/EU academic style.',
         relatedSkills: ['Web Architecture', 'JavaScript', 'APIs'],
@@ -140,8 +135,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'University of Toronto / Coursera Web Development Foundations',
         whyRequired: 'Canadian university pathway popular for local co-op and junior web hiring.',
         difficulty: 'Beginner',
-        price: 'Free to Audit',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Build foundational web apps aligned with Canadian CS curricula.',
         relatedSkills: ['HTML', 'CSS', 'JavaScript'],
@@ -154,8 +148,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'SkillsFuture / Google Career Certificates (Web & Digital)',
         whyRequired: 'SkillsFuture-aligned pathway commonly used for Singapore tech upskilling.',
         difficulty: 'Beginner',
-        price: 'Subsidized / Paid',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Earn credentials recognized in Singapore digital workforce programs.',
         relatedSkills: ['Web Development', 'Digital Skills'],
@@ -168,8 +161,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Meta Front-End Developer Professional Certificate',
         whyRequired: 'Global online certificate commonly used by Australian junior frontend applicants.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build React portfolio projects aligned with AU junior web hiring expectations.',
         relatedSkills: ['HTML', 'CSS', 'React'],
@@ -182,8 +174,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'HTML, CSS, and Javascript for Web Developers (Johns Hopkins)',
         whyRequired: 'Widely available Coursera track used by UAE remote and hub-city web learners.',
         difficulty: 'Beginner',
-        price: 'Free to Audit',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Ship responsive pages and JavaScript interactivity for Gulf tech roles.',
         relatedSkills: ['HTML', 'CSS', 'JavaScript'],
@@ -196,8 +187,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'freeCodeCamp Responsive Web Design Certification',
         whyRequired: 'English + self-paced path that Japanese junior web portfolios frequently showcase.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Publish certification proof alongside Japanese-market portfolio projects.',
         relatedSkills: ['HTML5', 'CSS3', 'Accessibility'],
@@ -210,8 +200,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Meta Front-End Developer Professional Certificate',
         whyRequired: 'Portuguese/English Coursera pathway popular with Brazilian career-switchers into web.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Demonstrate React fundamentals valued by BR product and agency hiring.',
         relatedSkills: ['HTML', 'CSS', 'React'],
@@ -224,8 +213,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Full Stack Open (University of Helsinki)',
         whyRequired: 'EU-friendly free full-stack curriculum popular with Dutch product engineering teams.',
         difficulty: 'Intermediate',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'JavaScript basics',
         learnOutcome: 'Ship modern React/Node projects recognized across EU remote hiring.',
         relatedSkills: ['React', 'Node.js', 'TypeScript'],
@@ -240,8 +228,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'NPTEL Data Science for Engineers',
         whyRequired: 'Core DS theory used across Indian engineering colleges and analytics hiring.',
         difficulty: 'Intermediate',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic Python and statistics',
         learnOutcome: 'Apply statistical and ML basics with an India-recognized NPTEL credential.',
         relatedSkills: ['Statistics', 'Python', 'Machine Learning'],
@@ -254,8 +241,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'IBM Data Science Professional Certificate',
         whyRequired: 'Common US hiring signal for junior data analyst / data scientist roles.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build notebooks, SQL workflows, and a starter DS portfolio for US markets.',
         relatedSkills: ['Python', 'SQL', 'Data Visualization'],
@@ -268,8 +254,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Imperial College / Coursera Mathematics for Machine Learning',
         whyRequired: 'UK-aligned math foundation frequently referenced for UK DS graduate schemes.',
         difficulty: 'Intermediate',
-        price: 'Free to Audit',
-        type: 'free',
+
         prerequisites: 'High-school math',
         learnOutcome: 'Strengthen linear algebra and calculus used in ML interviews in the UK.',
         relatedSkills: ['Linear Algebra', 'Calculus', 'Machine Learning'],
@@ -282,8 +267,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'IBM Data Science Professional Certificate',
         whyRequired: 'Common Canadian analytics hiring signal for junior DS roles.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build SQL + Python portfolio work aligned with Canadian co-op pipelines.',
         relatedSkills: ['Python', 'SQL', 'Data Visualization'],
@@ -296,8 +280,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Data Analytics Professional Certificate',
         whyRequired: 'Entry analytics path popular with Australian career switchers into data roles.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Practice SQL, sheets, and dashboards used in AU analyst hiring.',
         relatedSkills: ['SQL', 'Data Cleaning', 'Visualization'],
@@ -310,8 +293,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Data Analytics Professional Certificate',
         whyRequired: 'SkillsFuture-friendly global certificate often used for Singapore analytics upskilling.',
         difficulty: 'Beginner',
-        price: 'Subsidized / Paid',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Earn a recognized analytics credential for SG digital workforce programs.',
         relatedSkills: ['SQL', 'Data Analysis'],
@@ -324,8 +306,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Machine Learning Specialization by Andrew Ng (DeepLearning.AI)',
         whyRequired: 'Global ML foundation widely cited in German DS graduate and industry hiring.',
         difficulty: 'Intermediate',
-        price: 'Free to Audit',
-        type: 'free',
+
         prerequisites: 'Python basics',
         learnOutcome: 'Master supervised learning concepts expected in EU data science interviews.',
         relatedSkills: ['Machine Learning', 'Python'],
@@ -338,8 +319,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'IBM Data Science Professional Certificate',
         whyRequired: 'Portuguese/English Coursera path popular for Brazilian DS career switchers.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Ship notebooks and SQL projects relevant to BR analytics hiring.',
         relatedSkills: ['Python', 'SQL'],
@@ -354,8 +334,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'NPTEL Introduction to Cyber Security',
         whyRequired: 'Entry cyber fundamentals recognized across Indian academia and SOC hiring funnels.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic networking awareness',
         learnOutcome: 'Understand threats, controls, and security basics with an NPTEL certificate.',
         relatedSkills: ['Security Fundamentals', 'Networking'],
@@ -368,8 +347,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'CompTIA Security+ (Official / Pearson Vue Prep)',
         whyRequired: 'Standard US DoD and employer baseline cert for junior cybersecurity roles.',
         difficulty: 'Beginner',
-        price: 'Paid Exam',
-        type: 'paid',
+
         prerequisites: 'Basic IT knowledge',
         learnOutcome: 'Prepare for Security+ domains used widely in US entry-level SOC jobs.',
         relatedSkills: ['Security+', 'Risk Management', 'Threats'],
@@ -382,8 +360,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Cyber Security Fundamentals (Open University / FutureLearn)',
         whyRequired: 'UK pathway aligned with NCSC-informed cyber literacy for UK starters.',
         difficulty: 'Beginner',
-        price: 'Free / Upgrade',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Learn UK-relevant cyber hygiene, threats, and defensive basics.',
         relatedSkills: ['Cyber Awareness', 'Risk', 'Networking'],
@@ -396,8 +373,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Cybersecurity Professional Certificate',
         whyRequired: 'Hands-on SOC starter path used by Canadian junior cyber applicants.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Practice SIEM, Linux, and incident basics for CA entry cyber roles.',
         relatedSkills: ['Linux', 'SIEM', 'Python'],
@@ -410,8 +386,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Cybersecurity Professional Certificate',
         whyRequired: 'Common AU entry credential for SOC analyst and cyber graduate programs.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build defensive fundamentals valued by Australian cyber employers.',
         relatedSkills: ['Security Operations', 'Linux'],
@@ -424,8 +399,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'CompTIA Security+ (Official / Pearson Vue Prep)',
         whyRequired: 'Widely requested baseline cert across Singapore MSSP and enterprise SOC roles.',
         difficulty: 'Beginner',
-        price: 'Paid Exam',
-        type: 'paid',
+
         prerequisites: 'Basic IT knowledge',
         learnOutcome: 'Cover Security+ domains used in SG cyber hiring checklists.',
         relatedSkills: ['Security+', 'Risk'],
@@ -438,8 +412,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Cybersecurity Professional Certificate',
         whyRequired: 'Accessible global cyber path for UAE hub-city career switchers.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Gain SOC-ready fundamentals for Gulf cybersecurity roles.',
         relatedSkills: ['SIEM', 'Networking'],
@@ -454,8 +427,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'AWS Cloud Practitioner Essentials (India / APAC mentoring tracks)',
         whyRequired: 'Entry AWS cert path commonly used by Indian cloud and DevOps freshers.',
         difficulty: 'Beginner',
-        price: 'Free training / Paid exam',
-        type: 'free',
+
         prerequisites: 'Basic IT knowledge',
         learnOutcome: 'Explain core AWS services and cloud value for India/APAC roles.',
         relatedSkills: ['AWS', 'Cloud Fundamentals'],
@@ -468,8 +440,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Cloud Digital Leader / Associate Cloud Engineer Prep',
         whyRequired: 'Strong US multi-cloud signal alongside AWS for junior cloud roles.',
         difficulty: 'Beginner',
-        price: 'Free / Paid',
-        type: 'free',
+
         prerequisites: 'Basic networking',
         learnOutcome: 'Map GCP services to real architectures used in US cloud teams.',
         relatedSkills: ['GCP', 'Cloud Architecture'],
@@ -482,8 +453,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Azure Fundamentals (AZ-900) – EU / DACH Career Path',
         whyRequired: 'Microsoft Azure demand is high across German enterprise IT.',
         difficulty: 'Beginner',
-        price: 'Free learning / Paid exam',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Cover Azure core services used heavily in German corporate cloud migrations.',
         relatedSkills: ['Azure', 'Cloud Fundamentals'],
@@ -496,8 +466,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Azure Fundamentals (AZ-900) – EU / DACH Career Path',
         whyRequired: 'Azure is heavily used across UK public sector and enterprise cloud roles.',
         difficulty: 'Beginner',
-        price: 'Free learning / Paid exam',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Learn Azure core services expected in UK cloud associate interviews.',
         relatedSkills: ['Azure', 'Cloud Fundamentals'],
@@ -510,8 +479,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'AWS Cloud Practitioner Essentials (India / APAC mentoring tracks)',
         whyRequired: 'Entry AWS training used by Canadian cloud and DevOps freshers.',
         difficulty: 'Beginner',
-        price: 'Free training / Paid exam',
-        type: 'free',
+
         prerequisites: 'Basic IT knowledge',
         learnOutcome: 'Explain core AWS services for Canadian cloud associate roles.',
         relatedSkills: ['AWS', 'Cloud Fundamentals'],
@@ -524,8 +492,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google Cloud Digital Leader / Associate Cloud Engineer Prep',
         whyRequired: 'GCP + multi-cloud signal useful for Australian cloud engineering roles.',
         difficulty: 'Beginner',
-        price: 'Free / Paid',
-        type: 'free',
+
         prerequisites: 'Basic networking',
         learnOutcome: 'Map GCP services to architectures used in AU cloud teams.',
         relatedSkills: ['GCP', 'Cloud Architecture'],
@@ -538,8 +505,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'AWS Cloud Practitioner Essentials (India / APAC mentoring tracks)',
         whyRequired: 'AWS is a primary cloud stack across Singapore enterprise and startup hiring.',
         difficulty: 'Beginner',
-        price: 'Free training / Paid exam',
-        type: 'free',
+
         prerequisites: 'Basic IT knowledge',
         learnOutcome: 'Build AWS foundational knowledge for SG cloud associate roles.',
         relatedSkills: ['AWS', 'Cloud Fundamentals'],
@@ -552,8 +518,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Azure Fundamentals (AZ-900) – EU / DACH Career Path',
         whyRequired: 'Azure demand is strong across Japanese enterprise IT migrations.',
         difficulty: 'Beginner',
-        price: 'Free learning / Paid exam',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Cover Azure fundamentals expected in JP enterprise cloud roles.',
         relatedSkills: ['Azure', 'Cloud Fundamentals'],
@@ -568,8 +533,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google India / Android Developer Kotlin Fundamentals',
         whyRequired: 'Android-first market in India makes Kotlin the strongest junior mobile path.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic programming',
         learnOutcome: 'Build Android apps with Kotlin aligned to India mobile hiring needs.',
         relatedSkills: ['Kotlin', 'Android'],
@@ -582,8 +546,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Apple Developer SwiftUI Tutorials',
         whyRequired: 'iOS roles in the US strongly prefer Swift/SwiftUI portfolio proof.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Mac recommended',
         learnOutcome: 'Ship a native iOS UI with SwiftUI following Apple’s official curriculum.',
         relatedSkills: ['Swift', 'SwiftUI', 'iOS'],
@@ -596,8 +559,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'IMDA / SkillsFuture Mobile App Development Short Courses',
         whyRequired: 'Singapore workforce programs often fund mobile upskilling via SkillsFuture.',
         difficulty: 'Beginner',
-        price: 'Subsidized',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Complete a Singapore-recognized mobile development short course pathway.',
         relatedSkills: ['Mobile Development', 'Flutter / Native'],
@@ -610,8 +572,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Android Basics with Kotlin (Google Developers)',
         whyRequired: 'Official Android path useful for UK junior mobile roles beyond iOS-only shops.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Build Jetpack Compose apps aligned with UK Android hiring needs.',
         relatedSkills: ['Kotlin', 'Android'],
@@ -624,8 +585,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Apple Developer SwiftUI Tutorials',
         whyRequired: 'Canadian iOS hiring strongly values SwiftUI portfolio proof.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Mac recommended',
         learnOutcome: 'Ship native iOS UI work for CA mobile product teams.',
         relatedSkills: ['Swift', 'SwiftUI'],
@@ -638,8 +598,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google India / Android Developer Kotlin Fundamentals',
         whyRequired: 'Android-first Brazilian market makes Kotlin the strongest junior mobile path.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Basic programming',
         learnOutcome: 'Build Android apps aligned with BR mobile product hiring.',
         relatedSkills: ['Kotlin', 'Android'],
@@ -652,8 +611,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Apple Developer SwiftUI Tutorials',
         whyRequired: 'Japanese consumer-app market values polished iOS/SwiftUI craft.',
         difficulty: 'Beginner',
-        price: 'Free',
-        type: 'free',
+
         prerequisites: 'Mac recommended',
         learnOutcome: 'Ship SwiftUI apps with Apple’s official curriculum.',
         relatedSkills: ['Swift', 'SwiftUI'],
@@ -668,8 +626,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'NID / Interaction Design Foundations (Online Modules)',
         whyRequired: 'Design-education culture in India values strong interaction and research foundations.',
         difficulty: 'Beginner',
-        price: 'Free / Paid',
-        type: 'free',
+
         prerequisites: 'None',
         learnOutcome: 'Practice research-led design thinking valued by Indian product teams.',
         relatedSkills: ['Design Thinking', 'Interaction Design'],
@@ -682,8 +639,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'NN/g UX Certification Path (Intro Modules)',
         whyRequired: 'Nielsen Norman Group credentials are a strong US UX hiring signal.',
         difficulty: 'Intermediate',
-        price: 'Paid',
-        type: 'paid',
+
         prerequisites: 'Basic UX familiarity',
         learnOutcome: 'Apply evidence-based UX methods recognized by US product orgs.',
         relatedSkills: ['Usability', 'UX Research'],
@@ -696,8 +652,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Interaction Design Foundation – UX Career Track (EU)',
         whyRequired: 'Popular EU remote-friendly UX learning path for Netherlands product roles.',
         difficulty: 'Beginner',
-        price: 'Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build a research-backed UX portfolio suited to EU product teams.',
         relatedSkills: ['UX Research', 'Usability Testing'],
@@ -710,8 +665,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google UX Design Professional Certificate',
         whyRequired: 'Common UK entry UX credential for career switchers into product design.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Complete portfolio projects used in UK junior UX applications.',
         relatedSkills: ['UX Research', 'Figma', 'Prototyping'],
@@ -724,8 +678,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google UX Design Professional Certificate',
         whyRequired: 'Widely used Canadian pathway into junior product design roles.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Build case-study portfolio pieces aligned with CA UX hiring.',
         relatedSkills: ['UX Research', 'Wireframing'],
@@ -738,8 +691,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google UX Design Professional Certificate',
         whyRequired: 'Popular AU career-switcher path into digital product design.',
         difficulty: 'Beginner',
-        price: 'Free Trial / Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Ship Figma case studies suited to Australian product teams.',
         relatedSkills: ['Figma', 'UX Research'],
@@ -752,8 +704,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Interaction Design Foundation – UX Career Track (EU)',
         whyRequired: 'EU-friendly UX research track valued by German product orgs.',
         difficulty: 'Beginner',
-        price: 'Subscription',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Practice usability methods recognized across DACH product teams.',
         relatedSkills: ['Usability Testing', 'UX Research'],
@@ -766,8 +717,7 @@ const REGIONAL_COURSES_BY_CAREER = {
         title: 'Google UX Design Professional Certificate',
         whyRequired: 'SkillsFuture-aligned global UX credential used in Singapore digital upskilling.',
         difficulty: 'Beginner',
-        price: 'Subsidized / Paid',
-        type: 'paid',
+
         prerequisites: 'None',
         learnOutcome: 'Earn a recognized UX portfolio pathway for SG product roles.',
         relatedSkills: ['Figma', 'UX Research'],
@@ -858,8 +808,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Complete Web Development Bootcamp",
         whyRequired: "Provides foundational mastery of HTML, CSS, JavaScript, and full-stack development patterns.",
         difficulty: "Beginner",
-        price: "Free / $19.99",
-        type: "free",
+
         prerequisites: "Basic computer literacy",
         learnOutcome: "Ability to construct responsive websites and basic JavaScript web applications.",
         relatedSkills: ["HTML5", "CSS3", "JavaScript"],
@@ -870,8 +819,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Modern React with Redux & Next.js",
         whyRequired: "React powers over 60% of modern frontend engineering jobs; essential for building interactive UIs.",
         difficulty: "Intermediate",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Solid JavaScript (ES6+) knowledge mastered in Stage 1",
         learnOutcome: "Master component-driven architecture, state management, hooks, and server-side rendering.",
         relatedSkills: ["React.js", "Next.js", "State Management"],
@@ -882,8 +830,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Node.js & Express RESTful API Engineering",
         whyRequired: "Enables developers to construct backend web services, manage databases, and handle authentication.",
         difficulty: "Intermediate",
-        price: "Free",
-        type: "free",
+
         prerequisites: "JavaScript fundamentals from Stage 1",
         learnOutcome: "Build secure REST APIs, manage database connections, and write server-side business logic.",
         relatedSkills: ["Node.js", "Express.js", "MongoDB", "SQL"],
@@ -894,8 +841,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Full Stack Open (University of Helsinki)",
         whyRequired: "Industry-standard full-stack deep dive covering modern Web API standards, TypeScript, and testing.",
         difficulty: "Advanced",
-        price: "Free",
-        type: "free",
+
         prerequisites: "React & Node API skills mastered in Stage 2",
         learnOutcome: "Full-stack proficiency including React, Redux, Node.js, GraphQL, and TypeScript.",
         relatedSkills: ["TypeScript", "GraphQL", "Testing (Jest, Cypress)"],
@@ -1116,8 +1062,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Python for Data Science and Machine Learning Bootcamp",
         whyRequired: "Essential foundation covering Python, NumPy, Pandas, Matplotlib, and Scikit-Learn.",
         difficulty: "Beginner",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Basic algebra and computer skills",
         learnOutcome: "Clean complex datasets, perform exploratory analysis, and build core ML models.",
         relatedSkills: ["Python", "Pandas", "Scikit-Learn"],
@@ -1128,8 +1073,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Google Data Analytics Professional Certificate",
         whyRequired: "Industry-aligned introduction to SQL, data cleaning, analysis, and visualization.",
         difficulty: "Beginner",
-        price: "Free Trial / $39/mo",
-        type: "paid",
+
         prerequisites: "None",
         learnOutcome: "Master SQL queries, data transformations, and Tableau dashboards.",
         relatedSkills: ["SQL", "Data Cleaning", "Tableau"],
@@ -1140,8 +1084,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Machine Learning Specialization by Andrew Ng (DeepLearning.AI)",
         whyRequired: "The premier theoretical and practical course for machine learning algorithms.",
         difficulty: "Intermediate",
-        price: "Free to Audit",
-        type: "free",
+
         prerequisites: "Python & Pandas skills mastered in Stage 1",
         learnOutcome: "Deep understanding of Regression, Classification, Clustering, and Neural Networks.",
         relatedSkills: ["Machine Learning", "Mathematics", "Python"],
@@ -1152,8 +1095,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Applied Deep Learning with PyTorch",
         whyRequired: "Teaches modern neural network architectures for computer vision and NLP applications.",
         difficulty: "Advanced",
-        price: "Free",
-        type: "free",
+
         prerequisites: "Machine Learning fundamentals mastered in Stage 2",
         learnOutcome: "Construct PyTorch models, train CNNs/Transformers, and optimize hyperparameters.",
         relatedSkills: ["PyTorch", "Deep Learning", "Transformers"],
@@ -1374,8 +1316,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "CompTIA Security+ Certification Training",
         whyRequired: "The global benchmark baseline credential for starting a career in cybersecurity.",
         difficulty: "Beginner",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Basic IT networking awareness",
         learnOutcome: "Master security principles, threats, attacks, vulnerability management, and architecture.",
         relatedSkills: ["Security Fundamentals", "Networking", "Cryptography"],
@@ -1386,8 +1327,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Google Cybersecurity Professional Certificate",
         whyRequired: "Hands-on entry-level program covering Python, Linux, SQL, and Security Operations.",
         difficulty: "Beginner",
-        price: "Free Trial / $49/mo",
-        type: "paid",
+
         prerequisites: "None",
         learnOutcome: "Gain practical skills in SIEM tools, packet sniffing, and incident documentation.",
         relatedSkills: ["Linux", "Python", "SIEM", "Wireshark"],
@@ -1398,8 +1338,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "TryHackMe Pre-Security & Complete Beginner Path",
         whyRequired: "Interactive lab-based learning platform for practical cybersecurity experience.",
         difficulty: "Beginner to Intermediate",
-        price: "Free / $12/mo",
-        type: "free",
+
         prerequisites: "Linux & networking basics mastered in Stage 1",
         learnOutcome: "Hands-on experience with offensive/defensive cybersecurity tools in virtual labs.",
         relatedSkills: ["Linux CLI", "Nmap", "Wireshark", "Web Exploitation"],
@@ -1410,8 +1349,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Practical Network Penetration Testing (PNPT) & Burp Suite Deep Dive",
         whyRequired: "Advanced offensive security skills necessary for identifying system flaws ethically.",
         difficulty: "Advanced",
-        price: "Free / $29.99",
-        type: "free",
+
         prerequisites: "Networking, Linux, & SIEM fundamentals mastered in Stage 2",
         learnOutcome: "Conduct ethical penetration tests, exploit web vulnerabilities, and produce remediation reports.",
         relatedSkills: ["Metasploit", "Burp Suite", "Web Security", "Penetration Testing"],
@@ -1632,8 +1570,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "AWS Certified Solutions Architect - Associate Course",
         whyRequired: "The gold standard cloud architecture foundation course covering AWS compute, storage, networking, and security.",
         difficulty: "Beginner to Intermediate",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Basic networking & OS knowledge",
         learnOutcome: "Design resilient, highly available, and cost-effective cloud architectures on AWS.",
         relatedSkills: ["AWS", "Cloud Architecture", "VPC", "EC2", "S3"],
@@ -1644,8 +1581,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Terraform for Beginners: Infrastructure as Code",
         whyRequired: "Terraform is the industry standard tool for provisioning multi-cloud resources declaratively.",
         difficulty: "Intermediate",
-        price: "Free",
-        type: "free",
+
         prerequisites: "Cloud & AWS basics mastered in Stage 1",
         learnOutcome: "Write declarative HCL code to automate cloud resource creation, state management, and updates.",
         relatedSkills: ["Terraform", "Infrastructure as Code", "AWS"],
@@ -1656,8 +1592,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Docker & Kubernetes: The Practical Guide",
         whyRequired: "Containerization and orchestration power modern cloud-native applications.",
         difficulty: "Intermediate",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Linux CLI basics from Stage 1",
         learnOutcome: "Build Docker images, manage containers, and deploy microservices to Kubernetes clusters.",
         relatedSkills: ["Docker", "Kubernetes", "Microservices"],
@@ -1668,8 +1603,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "DevOps Engineering on AWS & GitHub Actions",
         whyRequired: "Teaches automated building, testing, and deployment of cloud infrastructure pipelines.",
         difficulty: "Advanced",
-        price: "Free",
-        type: "free",
+
         prerequisites: "Terraform & Docker skills mastered in Stage 2",
         learnOutcome: "Construct automated CI/CD workflows, manage container registries, and trigger zero-downtime cloud deployments.",
         relatedSkills: ["CI/CD", "GitHub Actions", "DevOps"],
@@ -1890,8 +1824,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Flutter & Dart - The Complete Guide",
         whyRequired: "Learn cross-platform mobile development for iOS and Android from a single codebase.",
         difficulty: "Beginner to Intermediate",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Basic programming concepts",
         learnOutcome: "Build beautiful, fast native iOS and Android apps using Flutter and Dart.",
         relatedSkills: ["Flutter", "Dart", "Cross-Platform UI"],
@@ -1902,8 +1835,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "iOS & Swift - Complete App Development Bootcamp",
         whyRequired: "Master native iOS engineering with Swift, SwiftUI, and Xcode.",
         difficulty: "Beginner",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Mac OS access recommended",
         learnOutcome: "Construct native iOS applications with modern SwiftUI component layout.",
         relatedSkills: ["Swift", "SwiftUI", "iOS", "Xcode"],
@@ -1914,8 +1846,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Android Basics with Kotlin (Google Developers)",
         whyRequired: "Google's official curriculum for building modern native Android apps with Kotlin.",
         difficulty: "Beginner",
-        price: "Free",
-        type: "free",
+
         prerequisites: "None",
         learnOutcome: "Master Jetpack Compose, Kotlin syntax, Coroutines, and Android Studio.",
         relatedSkills: ["Kotlin", "Android", "Jetpack Compose"],
@@ -2136,8 +2067,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Google UX Design Professional Certificate",
         whyRequired: "Comprehensive introduction covering the entire UX research, wireframing, and prototyping process.",
         difficulty: "Beginner",
-        price: "Free Trial / $49/mo",
-        type: "paid",
+
         prerequisites: "None",
         learnOutcome: "Complete 3 portfolio projects: a mobile app, a responsive website, and a cross-platform experience.",
         relatedSkills: ["UX Research", "Figma", "Wireframing", "Prototyping"],
@@ -2148,8 +2078,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Figma UI/UX Design Essentials",
         whyRequired: "Figma is the industry-standard software tool used by 90%+ of product design teams.",
         difficulty: "Beginner to Intermediate",
-        price: "$49.99",
-        type: "paid",
+
         prerequisites: "Basic computer skills",
         learnOutcome: "Master auto-layout, variants, design tokens, responsive components, and interactive prototypes in Figma.",
         relatedSkills: ["Figma", "UI Design", "Design Systems"],
@@ -2160,8 +2089,7 @@ export const CAREER_KNOWLEDGE_BASE = {
         title: "Interaction Design Foundation: User Research & Usability",
         whyRequired: "Provides deep evidence-based UX research methods and usability testing frameworks.",
         difficulty: "Intermediate",
-        price: "$16/month",
-        type: "paid",
+
         prerequisites: "Figma & UI design basics mastered in Stage 1",
         learnOutcome: "Conduct user interviews, design usability tests, and synthesize actionable design insights.",
         relatedSkills: ["User Research", "Usability Testing", "Information Architecture"],
@@ -2996,8 +2924,7 @@ export function buildCustomCareerRoadmap(careerGoal, _level = 'Beginner', _timel
       title: courseNames[0],
       whyRequired: `Introduces the core tools and habits you need to start ${profile.overviewFocus}.`,
       difficulty: "Beginner",
-      price: "Free",
-      type: "free",
+
       prerequisites: "Basic computer literacy",
       learnOutcome: profile.courseOutcomes?.[0] || `Build a starter ${goalTitle} deliverable and explain your workflow clearly.`,
       relatedSkills: profile.beginnerSkills.slice(0, 3),
@@ -3008,8 +2935,7 @@ export function buildCustomCareerRoadmap(careerGoal, _level = 'Beginner', _timel
       title: courseNames[1],
       whyRequired: `Teaches applied methods, stronger tools, and project delivery for ${goalTitle} work.`,
       difficulty: "Intermediate",
-      price: "$49.99",
-      type: "paid",
+
       prerequisites: `${goalTitle} fundamentals mastered in Stage 1`,
       learnOutcome: profile.courseOutcomes?.[1] || `Create a practical ${goalTitle} project with feedback, structure, and measurable results.`,
       relatedSkills: profile.intermediateSkills.slice(0, 3),
@@ -3020,8 +2946,7 @@ export function buildCustomCareerRoadmap(careerGoal, _level = 'Beginner', _timel
       title: courseNames[2],
       whyRequired: `Prepares you for larger, more advanced ${goalTitle} responsibilities in a realistic setting.`,
       difficulty: "Advanced",
-      price: "Free",
-      type: "free",
+
       prerequisites: "Intermediate experience from Stage 2",
       learnOutcome: profile.courseOutcomes?.[2] || `Design, optimize, and present an interview-ready ${goalTitle} capstone.`,
       relatedSkills: profile.advancedSkills.slice(0, 3),
