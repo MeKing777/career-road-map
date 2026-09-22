@@ -40,6 +40,10 @@ function normalizeStageName(stage) {
   return 'Beginner';
 }
 
+function formatCourseAccessLabel() {
+  return 'Course';
+}
+
 function ensureTasksForEveryStage(tasks, fallbackTasks = []) {
   const source = Array.isArray(tasks) ? tasks : [];
   const fallback = Array.isArray(fallbackTasks) ? fallbackTasks : [];
@@ -244,11 +248,11 @@ async function fetchCourseRecommendationsAI(formData, roadmapData) {
   const location = formData.nationality || 'Global (Online)';
 
   const prompt = `
-You are a career learning advisor. Recommend real, currently available courses (a mix of FREE and PAID) that help someone become a "${formData.goal}".
+You are a career learning advisor. Recommend real, currently available courses that help someone become a "${formData.goal}".
 Their current level is "${formData.level}", location is "${location}", and key skills to build are: ${skillNames || formData.goal}.
 
 Only recommend courses available for learners in "${location}" (global online options plus location-relevant providers such as NPTEL for India, SkillsFuture for Singapore, FutureLearn for UK, etc.).
-Return 8 courses total: at least 3 free and at least 3 paid.
+Return 8 courses total with a balanced mix of course types and learning formats.
 Each course MUST include "availableLocations" as an array that includes "${location}" and/or "Global (Online)".
 
 CRITICAL URL RULES:
@@ -259,8 +263,8 @@ CRITICAL URL RULES:
 You MUST return your output strictly as a single valid JSON object, no markdown fences, no extra text:
 {
   "courses": [
-    { "title": "Course Name", "platform": "Platform Name", "type": "free", "price": "Free", "level": "Beginner", "url": "https://...", "availableLocations": ["${location}", "Global (Online)"] },
-    { "title": "Course Name", "platform": "Platform Name", "type": "paid", "price": "$49.99", "level": "Intermediate", "url": "https://...", "availableLocations": ["Global (Online)"] }
+    { "title": "Course Name", "platform": "Platform Name", "type": "course", "price": "Course", "level": "Beginner", "url": "https://...", "availableLocations": ["${location}", "Global (Online)"] },
+    { "title": "Course Name", "platform": "Platform Name", "type": "course", "price": "Course", "level": "Intermediate", "url": "https://...", "availableLocations": ["Global (Online)"] }
   ]
 }
 `;
@@ -343,8 +347,8 @@ Required JSON Structure:
       "title": "Course Name",
       "whyRequired": "Why required for this career",
       "difficulty": "Beginner | Intermediate | Advanced",
-      "price": "Free or $49.99",
-      "type": "free | paid",
+      "price": "Course",
+      "type": "course",
       "prerequisites": "Prerequisite knowledge needed from earlier stage",
       "learnOutcome": "What the user will learn",
       "relatedSkills": ["Skill A", "Skill B"],
@@ -2080,10 +2084,10 @@ Keep your answer specific to this roadmap, clear, encouraging, and actionable. G
                             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.2rem', flexWrap: 'wrap' }}>
                               <span style={{
                                 fontSize: '0.7rem', fontWeight: 700, padding: '0.15rem 0.5rem', borderRadius: '999px',
-                                color: course.type === 'free' ? 'var(--accent-emerald)' : 'var(--accent-secondary)',
-                                background: course.type === 'free' ? 'rgba(16,185,129,0.12)' : 'rgba(168,85,247,0.12)'
+                                color: 'var(--accent-primary)',
+                                background: 'rgba(99, 102, 241, 0.12)'
                               }}>
-                                {course.type === 'free' ? 'Free' : (course.price || 'Paid')}
+                                {formatCourseAccessLabel(course)}
                               </span>
                               <span style={{
                                 fontSize: '0.7rem', fontWeight: 600, padding: '0.15rem 0.5rem', borderRadius: '999px',

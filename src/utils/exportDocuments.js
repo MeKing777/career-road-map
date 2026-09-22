@@ -51,6 +51,10 @@ function statusLabel(status) {
   return status || 'Pending';
 }
 
+function formatCourseAccessLabel(course) {
+  return 'Course';
+}
+
 // ==========================================================================
 // PDF EXPORT
 // ==========================================================================
@@ -347,7 +351,7 @@ export function exportRoadmapAsPDF(formData, roadmapData, completedTasks, comple
     ensureSpace(60);
     sectionTitle('Recommended Courses');
     const courseRows = courseList.map(c => [
-      c.title, c.platform || 'Online', c.type === 'free' ? 'Free' : (c.price || 'Paid'), c.level || 'All Levels', c.whyRequired || ''
+      c.title, c.platform || 'Online', 'Course', c.level || 'All Levels', c.whyRequired || ''
     ]);
     autoTable(doc, {
       startY: y,
